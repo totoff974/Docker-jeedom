@@ -21,7 +21,7 @@ RUN apt-get -y install ntp ca-certificates unzip curl sudo cron nano openssh-ser
     php7.0 php7.0-curl php7.0-gd php7.0-imap php7.0-json php7.0-mcrypt php7.0-mysql php7.0-xml php7.0-opcache php7.0-soap php7.0-xmlrpc lib$
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo "root:jeedom974" | chpasswd \
+RUN echo "root:Jeedom" | chpasswd \
     && sed -i 's/#Port 22/Port 22/;s/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
@@ -32,7 +32,7 @@ ADD https://raw.githubusercontent.com/jeedom/core/stable/install/install.sh /roo
 RUN chmod +x /root/install.sh \
     && apt-get -y autoremove
 
-RUN /root/install.sh -w /var/www/html -m jeedom974 \
+RUN /root/install.sh -w /var/www/html -m Jeedom \
     && apt-get -y autoremove
 
 VOLUME /var/lib/mysql
