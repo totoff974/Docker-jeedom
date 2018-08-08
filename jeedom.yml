@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  jeedom:
+    container_name: jeedom_srv
+    image: jeedom:base
+    volumes:
+      - ./data/html:/var/www/html
+      - ./data/mysql:/var/lib/mysql
+    ports:
+      - "9080:80"
+      - "9022:22"
+    network_mode: bridge
